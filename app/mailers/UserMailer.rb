@@ -1,7 +1,11 @@
 class UserMailer < ApplicationMailer
     default from: 'from@example.com'
 
-    def loan_created_email(BookLoan loan)
+    # def initialize
+
+    # end
+
+    def loan_created_email(loan)
         @title = loan.book.title
         @due_date = loan.due_date
         @email_address = loan.user.email
