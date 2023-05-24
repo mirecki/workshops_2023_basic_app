@@ -1,3 +1,5 @@
+require 'capybara/rspec'
+
 module ApplicationHelper
   def reserve_book_button(book, css_class: '')
     return unless book.reservation_available_for?(current_user)
