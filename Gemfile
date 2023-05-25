@@ -48,8 +48,10 @@ gem 'sassc-rails'
 
 gem 'devise'
 gem 'sidekiq-cron', '~> 1.10'
+gem 'nokogiri', '~> 1.14.2'
 
 group :development, :test do
+  gem 'bunny'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -66,6 +68,7 @@ group :development, :test do
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers', '~> 5.3'
+  gem 'sneakers'
 end
 
 group :development do
