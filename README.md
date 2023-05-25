@@ -1,7 +1,7 @@
 # Biblioteczka - warsztatowy poligon doświadczalny
 
 Aplikacja warsztatowa, nasz poligon doświadczalny, na którym będziecie mogli ćwiczyć prezentowaną praktyczną wiedzę.
-
+aaa
 Kilka słów o startowej apce:
 - aplikacja 'biblioteczna'
 - pozwala na rejestrację (logowanie, itd.) użytkowników

@@ -6,6 +6,7 @@ class BookLoansController < ApplicationController
     respond_to do |format|
       if @book_loan.save
         notice_calendar
+        LoanCreatedJob.perform_async(@book_loan.id)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
       else
@@ -33,7 +34,7 @@ class BookLoansController < ApplicationController
   end
 
   def prepare_book_loan
-    @book_loan = current_user.book_loans.new(book_id: book_loan_params, due_date: Time.zone.today + 14.days)
+    @book_loan = current_user.book_loans.new(book_id: book_loan_params, due_date: Time.zone.now + 5.minutes)
   end
 
   def set_book_loan
