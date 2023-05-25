@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    a9n (1.5.0)
     actioncable (7.0.4.3)
       actionpack (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -125,6 +126,9 @@ GEM
       raabro (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -154,6 +158,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    multi_xml (0.6.0)
     msgpack (1.7.1)
     net-imap (0.3.4)
       date
@@ -168,6 +173,8 @@ GEM
     nokogiri (1.14.5-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.5-x86_64-linux)
+      racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
@@ -364,6 +371,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  a9n
   bootsnap
   bootstrap
   bunny
@@ -372,6 +380,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  httparty
   importmap-rails
   jbuilder
   letter_opener

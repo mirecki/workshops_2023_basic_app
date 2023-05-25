@@ -53,10 +53,11 @@ gem 'nokogiri', '~> 1.14.2'
 group :development, :test do
   gem 'bunny'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'a9n'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'letter_opener'
+  gem 'httparty'
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'redis'
