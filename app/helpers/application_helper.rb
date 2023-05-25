@@ -1,3 +1,6 @@
+require 'capybara/rspec'
+require 'support/chromedriver'
+# require 'support/selenium_spec_firefox_remote'
 module ApplicationHelper
   def reserve_book_button(book, css_class: '')
     return unless book.reservation_available_for?(current_user)
