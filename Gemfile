@@ -47,8 +47,8 @@ gem 'sassc-rails'
 # gem "image_processing", "~> 1.2"
 
 gem 'devise'
-gem 'sidekiq-cron', '~> 1.10'
 gem 'nokogiri', '~> 1.14.2'
+gem 'sidekiq-cron', '~> 1.10'
 
 group :development, :test do
   gem 'bunny'
@@ -58,9 +58,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'google-api-client', require: 'google/apis/calendar_v3'
+  gem 'httparty'
   gem 'omniauth-google-oauth2'
   gem 'omniauth-rails_csrf_protection'
-  gem 'httparty'
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'redis'

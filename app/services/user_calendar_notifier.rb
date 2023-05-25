@@ -34,13 +34,13 @@ class UserCalendarNotifier
 
   def secrets
     Google::APIClient::ClientSecrets.new({
-      'web' => {
-        'access_token' => user.token,
-        'refresh_token' => user.refresh_token,
-        'client_id' => A9n.google_client_id,
-        'client_secret' => A9n.google_client_secret
-      }
-    })
+                                           'web' => {
+                                             'access_token' => user.token,
+                                             'refresh_token' => user.refresh_token,
+                                             'client_id' => A9n.google_client_id,
+                                             'client_secret' => A9n.google_client_secret
+                                           }
+                                         })
   end
 
   def event_data
@@ -55,7 +55,7 @@ class UserCalendarNotifier
       }
     }
   end
-  
+
   def two_week_from_now
     @two_week_from_now ||= Time.zone.now + 14.days
   end
