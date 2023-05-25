@@ -26,7 +26,7 @@ describe 'Log in', type: :feature do
     ## Miejsce na Twój kodzik
 
     it 'logs in' do
-        within '#new_user' do
+      within '#new_user' do
         fill_in 'user_email',	with: user.email
         fill_in 'user_password',	with: user.password
         click_button 'Log in'
