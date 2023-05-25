@@ -27,9 +27,6 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -50,8 +47,11 @@ gem 'sassc-rails'
 # gem "image_processing", "~> 1.2"
 
 gem 'devise'
+gem 'sidekiq-cron', '~> 1.10'
+gem 'nokogiri', '~> 1.14.2'
 
 group :development, :test do
+  gem 'bunny'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'a9n'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -60,6 +60,7 @@ group :development, :test do
   gem 'httparty'
   gem 'pry'
   gem 'rails-controller-testing'
+  gem 'redis'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-gitlab-security'
@@ -68,6 +69,7 @@ group :development, :test do
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers', '~> 5.3'
+  gem 'sneakers'
 end
 
 group :development do
