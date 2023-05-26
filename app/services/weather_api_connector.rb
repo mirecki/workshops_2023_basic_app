@@ -1,9 +1,9 @@
 class WeatherApiConnector
   API_KEY = A9n.weather_api_key
-  getIPUrl = 'http://ip-api.com/json/';
-  ipUri = URI(getIPUrl)
-  responseIp = Net::HTTP.get(ipUri)
-  LOCATION = JSON.parse(responseIp)['city'].freeze
+  get_ip_url = 'http://ip-api.com/json/'
+  ip_uri = URI(get_ip_url)
+  response_ip = Net::HTTP.get(ip_uri)
+  LOCATION = JSON.parse(response_ip)['city'].freeze
 
   def weather_data
     url = "http://api.weatherapi.com/v1/current.json?key=#{API_KEY}&q=#{LOCATION}"

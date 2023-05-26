@@ -1,7 +1,11 @@
  <div>
- Today's weather in <%= weather_presenter.location %> is:
-  <%= weather_presenter.temperature %> °C,
-  <%= weather_presenter.description %>
-  <img src=<%= weather_presenter.icon %>>
-  <em><%= weather_presenter.encourage_text %></em>
+ <% presenter = WeatherPresenter.new(weather_data) %>
+ Today's weather in <%= presenter.location %> is:
+  <%= presenter.temperature %> °C,
+  <%= presenter.description %>
+  <img src=<%= presenter.icon %>>
+  <em><%= presenter.encourage_text %></em>
  </div>
+# posluzylem sie https://www.rubyguides.com/2019/09/rails-patterns-presenter-service/, 
+# wciaz mi sie nie podoba ze mam w zasadzie globalna metode w helperze bo robi sie z tego metoda globalna. 
+# Przeniesienie tych 2 metod do samego presentera nie zadziala bo nie bedzie tego widziec w widoku chyba ze musze miec jakos nazwe widoku korespondujaca z presenterem.

@@ -24,10 +24,6 @@ module ApplicationHelper
   end
 
   def weather_data
-    @weather_data ||= WeatherApiConnector.new.weather_data
-  end
-
-  def weather_presenter
-    @weather_presenter ||= WeatherPresenter.new(weather_data)
+    @weather_data ||= ::WeatherApiConnector.new.weather_data
   end
 end
