@@ -11,8 +11,16 @@ class UserCalendarNotifier
 
   def insert_event
     return unless user.token.present? && user.refresh_token.present?
-
     google_calendar_client.insert_event(CALENDAR_ID, event_data)
+    # events = google_calendar_client.list_events('primary')
+    book.book_loans.last.event_id = google_calendar_client.list_events('primary').items.last.id
+    book.book_loans.last.save
+  end
+
+  def delete_event(event_id)
+    return unless user.token.present? && user.refresh_token.present?
+
+    google_calendar_client.delete_event(CALENDAR_ID, event_id)
   end
 
   private
@@ -34,13 +42,13 @@ class UserCalendarNotifier
 
   def secrets
     Google::APIClient::ClientSecrets.new({
-                                           'web' => {
-                                             'access_token' => user.token,
-                                             'refresh_token' => user.refresh_token,
-                                             'client_id' => A9n.google_client_id,
-                                             'client_secret' => A9n.google_client_secret
-                                           }
-                                         })
+      'web' => {
+        'access_token' => user.token,
+        'refresh_token' => user.refresh_token,
+        'client_id' => A9n.google_client_id,
+        'client_secret' => A9n.google_client_secret
+      }
+    })
   end
 
   def event_data

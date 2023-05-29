@@ -16,4 +16,12 @@ class UserMailer < ApplicationMailer
     email_subject = 'bla bla bla 2'
     mail(to: @email_address, subject: email_subject)
   end
+
+  def returned_notification_email(loan)
+    @title = loan.book.title
+    @due_date = loan.due_date
+    @email_address = loan.user.email
+    email_subject = 'Book' + loan.book.title + 'has been returned'
+    mail(to: @email_address, subject: email_subject)
+  end
 end

@@ -25,12 +25,27 @@ class BookLoansController < ApplicationController
     end
   end
 
+  def return
+    respond_to do |format|
+      if @book_loan.returned!
+        delete_calendar_event(@book_loan.event_id)
+        LoanCreatedJob.perform_async(@book_loan.id)
+        format.html { redirect_to book_requests_path, notice: flash_notice }
+        format.json { render :show, status: :ok, location: book }
+      end
+    end
+  end
+
   private
 
   delegate :book, to: :@book_loan
 
   def notice_calendar
     UserCalendarNotifier.new(current_user, book).insert_event
+  end
+
+  def delete_calendar_event(event_id)
+    UserCalendarNotifier.new(current_user, book).delete_event(event_id)
   end
 
   def prepare_book_loan
