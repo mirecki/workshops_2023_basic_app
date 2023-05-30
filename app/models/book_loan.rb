@@ -2,12 +2,12 @@ class BookLoan < ApplicationRecord
   belongs_to :book
   belongs_to :user
 
-  enum status: { checked_out: 'checked_out', cancelled: 'cancelled', returned: 'returned' }
+  enum status: { checked_out: 'checked_out', cancelled: 'cancelled' }
 
   scope :ongoing_by_book, ->(book) { checked_out.where(book:) }
 
   validate :loan_not_available, on: :create
-  validate :return_not_available, on: :return
+  # validate :return_not_available, on: :return
 
   def loan_not_available
     errors.add(:book, 'loan is not available for you') unless book.loan_available_for?(user)

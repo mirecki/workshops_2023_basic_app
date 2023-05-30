@@ -42,3 +42,5 @@ en:
         notice: 'Book Loan was successfully created.'
       cancel:
         notice: 'Book loan was successfully cancelled.'
+      return:
+        notice: 'Book loan was successfully returned.'
