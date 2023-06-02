@@ -20,7 +20,7 @@ class WeatherPresenter
   end
 
   def nice_weather?
-    description == 'Sunny' || 'Partly cloudy'
+    description == 'Sunny' || description == 'Partly cloudy'
   end
 
   def good_to_read_outside?
@@ -42,4 +42,5 @@ end
 
 # posluzylem sie https://www.rubyguides.com/2019/09/rails-patterns-presenter-service/,
 # wciaz mi sie nie podoba ze mam w zasadzie globalna metode w helperze bo robi sie z tego metoda globalna.
-# Przeniesienie tych 2 metod do samego presentera nie zadziala bo nie bedzie tego widziec w widoku chyba ze musze miec jakos nazwe widoku korespondujaca z presenterem.
+# Przeniesienie tych 2 metod do samego presentera nie zadziala bo nie bedzie tego widziec w widoku
+# chyba ze musze miec jakos nazwe widoku korespondujaca z presenterem.
