@@ -42,9 +42,9 @@ class Book < ApplicationRecord
 
   def loan_status(user)
     return '' if ongoing_loan.blank?
-    return "loaned (due date: #{ongoing_loan.due_date})" unless ongoing_loan.by_user?(user)
+    return "loaned (due date: #{ongoing_loan.due_date.to_date})" unless ongoing_loan.by_user?(user)
 
-    "loaned (due date: #{ongoing_loan.due_date}) by you"
+    "loaned (due date: #{ongoing_loan.due_date.to_date}) by you"
   end
 
   def reservation_status(user)
