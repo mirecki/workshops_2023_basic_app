@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :book_loans, only: [:create] do
     member do
       post 'cancel'
+      post 'return'
     end
   end
   resources :book_reservations, only: [:create] do

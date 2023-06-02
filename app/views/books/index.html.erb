@@ -12,6 +12,7 @@
             <%= link_to 'Details', book_path(book), class: "btn book-btn btn-details" %>
             <%= reserve_book_button(book, css_class: 'book-btn btn-reserve') %>
             <%= loan_book_button(book, css_class: 'book-btn btn-reserve') %>
+            <%= return_book_button(book, css_class: 'book-btn btn-reserve') %>
           </div>
         </div>
       </div>

@@ -85,6 +85,7 @@ GEM
     bunny (2.20.3)
       amq-protocol (~> 2.3, >= 2.3.1)
       sorted_set (~> 1, >= 1.0.2)
+    byebug (11.1.3)
     capybara (3.39.1)
       addressable
       matrix
@@ -450,6 +451,7 @@ DEPENDENCIES
   bootsnap
   bootstrap
   bunny
+  byebug
   capybara
   debug
   devise

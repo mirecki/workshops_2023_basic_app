@@ -307,6 +307,13 @@ class UserCalendarNotifier
     google_calendar_client.insert_event(CALENDAR_ID, event_data)
   end
 
+  def delete_event
+    return unless user.token.present? && user.refresh_token.present?
+    page_token = nil
+    google_calendar_client.list_events(CALENDAR_ID, page_token: page_token)
+    google_calendar_client.delete_event(CALENDAR_ID, event_id)
+  end
+
   private
 
   attr_reader :user, :book

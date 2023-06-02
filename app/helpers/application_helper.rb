@@ -23,6 +23,17 @@ module ApplicationHelper
     )
   end
 
+  def return_book_button(book, css_class: '')
+    return unless book.return_available_for?(current_user)
+
+    button_to(
+      'Return book',
+      return_book_loan_path(book.book_loans.last),
+      method: :post,
+      class: "btn #{css_class}"
+    )
+  end
+
   def weather_data
     @weather_data ||= ::WeatherApiConnector.new.weather_data
   end

@@ -13,6 +13,14 @@ class UserCalendarNotifier
     return unless user.token.present? && user.refresh_token.present?
 
     google_calendar_client.insert_event(CALENDAR_ID, event_data)
+    event_id = google_calendar_client.list_events('primary').items.last.id
+    book.book_loans.last.update!(event_id:)
+  end
+
+  def delete_event(event_id)
+    return unless user.token.present? && user.refresh_token.present?
+
+    google_calendar_client.delete_event(CALENDAR_ID, event_id)
   end
 
   private
