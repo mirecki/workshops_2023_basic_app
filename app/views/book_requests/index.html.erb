@@ -15,6 +15,13 @@
                 method: :post,
                 class: "btn btn-danger cancel-btn"
               ) unless book_loan.cancelled? %>
+              
+          <%= button_to(
+                "Return",
+                return_book_loan_path(book_loan),
+                method: :post,
+                class: "btn btn-danger return-btn"
+              ) if book_loan.return_available_for?(current_user) %>
         </li>
       <% end %>
     </ul>

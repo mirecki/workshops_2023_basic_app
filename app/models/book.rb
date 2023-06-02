@@ -25,8 +25,7 @@ class Book < ApplicationRecord
   end
 
   def return_available_for?(user)
-    # book_loans.where(user: user, book: self).present? &&  book_loans.checked_out.present?
-    return true
+    book_loans.where(user:, book: self).present? && book_loans.checked_out.present?
   end
 
   def status_for(user)

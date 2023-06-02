@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
     @title = loan.book.title
     @due_date = loan.due_date
     @email_address = loan.user.email
-    email_subject = 'Book' + loan.book.title + 'has been returned'
+    email_subject = "Book#{loan.book.title}has been returned"
     mail(to: @email_address, subject: email_subject)
   end
 end

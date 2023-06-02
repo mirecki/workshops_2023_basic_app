@@ -12,6 +12,7 @@ AllCops:
     - 'config/**/*'
     - 'config.ru'
     - 'bin/**/*'
+    - 'spec/support/**/*'
 
 Documentation:
   Enabled: false

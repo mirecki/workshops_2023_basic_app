@@ -28,7 +28,7 @@ module ApplicationHelper
 
     button_to(
       'Return book',
-      book_loans_path(book_id: book.id),
+      return_book_loan_path(book.book_loans.last),
       method: :post,
       class: "btn #{css_class}"
     )
