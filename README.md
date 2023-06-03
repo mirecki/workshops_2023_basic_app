@@ -1,3 +1,5 @@
+Side app repo => https://github.com/mirecki/workshops_2023_side_app
+
 # Biblioteczka - warsztatowy poligon doświadczalny
 
 Aplikacja warsztatowa, nasz poligon doświadczalny, na którym będziecie mogli ćwiczyć prezentowaną praktyczną wiedzę.
