@@ -2,8 +2,8 @@ require 'bunny'
 
 module Publishers
   # **nazwa_hasha sposob na rozpawkoanie hasha
-  class LoanBookPublisher
-    def initialize(message:)
+  class LoanBook
+    def initialize(message)
       @message = message
     end
 
@@ -15,4 +15,6 @@ module Publishers
       ).perform
     end
   end
+
+  attr_reader :message
 end
