@@ -1,3 +1,31 @@
+
+Side app repo => https://github.com/mirecki/workshops_2023_side_app
+
+Currently stack with consumer not getting logs. Dunno why. Check last PR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Biblioteczka - warsztatowy poligon doświadczalny
 
 Aplikacja warsztatowa, nasz poligon doświadczalny, na którym będziecie mogli ćwiczyć prezentowaną praktyczną wiedzę.
