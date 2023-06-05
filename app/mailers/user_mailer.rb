@@ -5,7 +5,15 @@ class UserMailer < ApplicationMailer
     @title = loan.book.title
     @due_date = loan.due_date
     @email_address = loan.user.email
-    email_subject = 'bla bla bla'
+    email_subject = "Loan has been created for of Book#{loan.book.title}"
+    mail(to: @email_address, subject: email_subject)
+  end
+
+  def loan_canceled_email(loan)
+    @title = loan.book.title
+    @due_date = loan.due_date
+    @email_address = loan.user.email
+    email_subject = "Loan has been canceled for of Book#{loan.book.title}"
     mail(to: @email_address, subject: email_subject)
   end
 
@@ -13,7 +21,7 @@ class UserMailer < ApplicationMailer
     @title = loan.book.title
     @due_date = loan.due_date
     @email_address = loan.user.email
-    email_subject = 'bla bla bla 2'
+    email_subject = "Due date of Book#{loan.book.title}"
     mail(to: @email_address, subject: email_subject)
   end
 
@@ -21,7 +29,7 @@ class UserMailer < ApplicationMailer
     @title = loan.book.title
     @due_date = loan.due_date
     @email_address = loan.user.email
-    email_subject = "Book#{loan.book.title}has been returned"
+    email_subject = "Book#{loan.book.title} has been returned"
     mail(to: @email_address, subject: email_subject)
   end
 end

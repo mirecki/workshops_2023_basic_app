@@ -5,7 +5,7 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
-        creat_loan(@book_loan.id)
+        creat_loan(@book_loan)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
       else
@@ -18,6 +18,7 @@ class BookLoansController < ApplicationController
   def cancel
     respond_to do |format|
       if @book_loan.cancelled!
+        cancel_loan(@book_loan)
         format.html { redirect_to book_requests_path, notice: flash_notice }
         format.json { render :show, status: :ok, location: book }
       end
@@ -27,7 +28,7 @@ class BookLoansController < ApplicationController
   def return
     respond_to do |format|
       if @book_loan.checked_out?
-        delete_loan(@book_loan.event_id, @book_loan.id)
+        delete_loan(@book_loan)
         @book_loan.destroy
         format.html { redirect_to books_url, notice: 'Book was successfully returned.' }
         format.json { head :no_content }
@@ -38,22 +39,37 @@ class BookLoansController < ApplicationController
   private
 
   delegate :book, to: :@book_loan
-  def creat_loan(id)
+  def creat_loan(book_loan)
     notice_calendar
-    LoanCreatedJob.perform_async(id)
+    LoanCreatedJob.perform_async(book_loan.id)
+    publish_create_log(book_loan)
+  end
+
+  def delete_loan(book_loan)
+    ReturnedNotificationJob.perform_async(book_loan.id)
+    delete_calendar_event(book_loan.event_id)
+  end
+
+  def cancel_loan(book_loan)
+    LoanCanceledJob.perform_async(book_loan.id)
+    delete_calendar_event(book_loan.event_id)
+    publish_cancel_log(book_loan)
   end
 
   def notice_calendar
     UserCalendarNotifier.new(current_user, book).insert_event
   end
 
-  def delete_loan(event_id, id)
-    delete_calendar_event(event_id)
-    LoanCreatedJob.perform_async(id)
-  end
-
   def delete_calendar_event(event_id)
     UserCalendarNotifier.new(current_user, book).delete_event(event_id)
+  end
+
+  def publish_create_log(book_loan)
+    Publishers::LoanBook.new(book_loan.attributes).publish
+  end
+
+  def publish_cancel_log(book_loan)
+    Publishers::CanceledLoanBook.new(book_loan.attributes).publish
   end
 
   def prepare_book_loan
